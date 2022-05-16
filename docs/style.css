@@ -14,6 +14,8 @@ h1 {
 }
 
 input {
+    font-family: monospace;
+    width: 100%;
     color: inherit;
     background-color: #181818;
     color-scheme: dark;
