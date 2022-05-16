@@ -2,15 +2,44 @@
     <head>
         <meta property="og:site_name" content="teeminus" />
         <meta property="og:title" content="Countdown clock" />
-
         <title>teeminus</title>
-
         <link rel="stylesheet" href="/style.css">
-
+        <script src="/script.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
 
-    <body>
-        <h1>Coming soon...</h1>
+    <body onload="show()">
+        <div id="create">
+            <div class="header-container">
+                <h1 class="">Make a countdown</h1>
+            </div>
+
+            <div class="separator"></div>
+
+            <div class="input-container">
+                <div class="field-container">
+                    <label for="moment-date" class="green">Date</label>
+                    <input type="date" id="moment-date">
+                </div>
+
+                <div class="field-container">
+                    <label for="moment-time" class="yellow">Time</label>
+                    <input type="time" id="moment-time">
+                </div>
+
+                <div class="field-container">
+                    <label for="moment-name" class="cyan">Name</label>
+                    <input type="text" id="moment-name">
+                </div>
+            </div>
+
+            <div class="separator"></div>
+
+            <button type="button">Create</button>
+
+        </div>
+        <div id="display">
+            <h1 class="magenta">Coming soon...</h1>
+        </div>
     </body>
 </html>
