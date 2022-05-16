@@ -44,6 +44,45 @@ button {
     flex-direction: column;
 }
 
+.name-container {
+    text-align: center;
+}
+
+.count-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1ch;
+    align-items: center;
+}
+
+.count-preface {
+}
+
+.clock-container {
+    flex: 0 1 auto;
+    display: flex;
+    flex-direction: row;
+    gap: 1ch;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.clock-part-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.clock-part-container p {
+    margin: 0;
+    text-align: right;
+    font-size: 24pt;
+}
+
+.clock-part-container p.clock-part-label {
+    font-size: 12pt;
+}
+
 .separator {
     width: calc(100% + 2em);
     height: 2px;
@@ -81,5 +120,8 @@ button {
 }
 
 #display {
+    flex-direction: column;
     margin: auto;
+    gap: 1em;
+    align-items: center;
 }

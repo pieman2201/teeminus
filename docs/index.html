@@ -18,28 +18,66 @@
 
             <div class="input-container">
                 <div class="field-container">
-                    <label for="moment-date" class="green">Date</label>
-                    <input type="date" id="moment-date">
+                    <label for="inp-date" class="green">Date</label>
+                    <input type="date" id="inp-date">
                 </div>
 
                 <div class="field-container">
-                    <label for="moment-time" class="yellow">Time</label>
-                    <input type="time" id="moment-time">
+                    <label for="inp-time" class="yellow">Time</label>
+                    <input type="time" id="inp-time">
                 </div>
 
                 <div class="field-container">
-                    <label for="moment-name" class="cyan">Name</label>
-                    <input type="text" id="moment-name">
+                    <label for="inp-name" class="cyan">Name</label>
+                    <input type="text" id="inp-name">
                 </div>
             </div>
 
             <div class="separator"></div>
 
-            <button type="button">Create</button>
+            <button type="button" onclick="create()">Create</button>
 
         </div>
-        <div id="display">
-            <h1 class="magenta">Coming soon...</h1>
+        <div id="display" style="display: none">
+            <div class="name-container">
+                <h1 id="dsp-name"></h1>
+            </div>
+            <div class="count-container">
+
+                <div class="count-preface">
+                    <div class="clock-part-container">
+                        <p class="clock-part-label dummy">&nbsp;</p>
+                        <p>T<span id="preface" class="magenta">-</span></p>
+
+                    </div>
+                </div>
+
+                <div class="clock-container">
+
+                    <div class="clock-part-container blue">
+                        <p class="clock-part-label blue">Days</p>
+                        <p id="clock-days"></p>
+                    </div>
+
+                    <div class="clock-part-container green">
+                        <p class="clock-part-label green">Hours</p>
+                        <p id="clock-hours"></p>
+                    </div>
+
+                    <div class="clock-part-container yellow">
+                        <p class="clock-part-label yellow">Minutes</p>
+                        <p id="clock-minutes"></p>
+                    </div>
+
+                    <div class="clock-part-container red">
+                        <p class="clock-part-label red">Seconds</p>
+                        <p id="clock-seconds"></p>
+                    </div>
+
+                </div>
+
+
+            </div>
         </div>
     </body>
 </html>
