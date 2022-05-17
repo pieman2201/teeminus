@@ -16,6 +16,7 @@ function show() {
         // set name and pass date
         var value = decode(params.get('i'));
         document.getElementById("dsp-name").textContent = value.n;
+        document.title = value.n + " | " + document.title;
 
         display(new Date(value.d));
         setInterval(() => display(new Date(value.d)), 100);
