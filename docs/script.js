@@ -86,3 +86,13 @@ function display(d) {
     document.getElementById("clock-minutes").textContent = minutes;
     document.getElementById("clock-seconds").textContent = seconds;
 }
+
+function copy() {
+    navigator.clipboard.writeText(window.location.href);
+    document.getElementById("share").disabled = true;
+    document.getElementById("share").textContent = "Copied";
+    setTimeout(() => {
+        document.getElementById("share").disabled = false;
+        document.getElementById("share").textContent = "Share";
+    }, 3000);
+}
