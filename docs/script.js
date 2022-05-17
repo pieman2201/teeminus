@@ -16,7 +16,9 @@ function show() {
         // set name and pass date
         var value = decode(params.get('i'));
         document.getElementById("dsp-name").textContent = value.n;
-        document.title = value.n + " | " + document.title;
+        if (value.n.trim().length > 0) {
+            document.title = value.n.trim() + " | " + document.title;
+        }
 
         display(new Date(value.d));
         setInterval(() => display(new Date(value.d)), 100);
@@ -59,7 +61,7 @@ function create() {
     var newParams = new URLSearchParams({
         i: encode({
             d: cDate,
-            n: cName
+            n: cName.trim()
         })
     });
     window.location.href = baseURL + "?" + newParams.toString();
