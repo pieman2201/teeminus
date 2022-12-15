@@ -1,9 +1,29 @@
-function encode(o) {
-    return encodeURIComponent(window.btoa(encodeURIComponent(JSON.stringify(o))));
+function encode(s) {
+    return encodeURIComponent(window.btoa(encodeURIComponent(s)));
 }
 
 function decode(s) {
-    return JSON.parse(decodeURIComponent(window.atob(decodeURIComponent(s))));
+    return decodeURIComponent(window.atob(decodeURIComponent(s)));
+}
+
+function encodeDateName(date, name) {
+    var encoded = encode(date.toISOString().split('.')[0]);
+    encoded = encoded.split('%')[0];
+    if (name.length) {
+        encoded += ' ' + encode(name);
+    }
+    return encoded;
+}
+
+function decodeParam(param) {
+    var split = param.split(' ');
+    split[0] = split[0] + '%3D';
+    var name = '';
+    if (split.length > 1) {
+        var name = decode(split[1]);
+    }
+    var date = new Date(decode(split[0]) + '.000Z');
+    return [date, name];
 }
 
 function show() {
@@ -14,14 +34,14 @@ function show() {
         document.getElementById("create").style.display = "none";
 
         // set name and pass date
-        var value = decode(params.get('i'));
-        document.getElementById("dsp-name").textContent = value.n;
-        if (value.n.trim().length > 0) {
-            document.title = value.n.trim() + " | " + document.title;
+        [date, name] = decodeParam(params.get('i'));
+        document.getElementById("dsp-name").textContent = name;
+        if (name.trim().length > 0) {
+            document.title = name.trim() + " | " + document.title;
         }
 
-        display(new Date(value.d));
-        setInterval(() => display(new Date(value.d)), 100);
+        display(date);
+        setInterval(() => display(date), 100);
 
     } else {
         // show creation ui
@@ -52,17 +72,11 @@ function create() {
     cDate.setUTCMilliseconds(0);
     cDate.setTime(cDate.getTime() + cDate.getTimezoneOffset() * 60 * 1000);
 
-    console.log(cDate);
-
     var cName = nameInput.value;
-    console.log(cName);
 
     var baseURL = window.location.origin + window.location.pathname;
     var newParams = new URLSearchParams({
-        i: encode({
-            d: cDate,
-            n: cName.trim()
-        })
+        i: encodeDateName(cDate, cName)
     });
     window.location.href = baseURL + "?" + newParams.toString();
 }

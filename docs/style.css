@@ -1,6 +1,6 @@
 body {
     background-color: #181818;
-    font-family: monospace;
+    font-family: 'Noto Sans Mono', monospace;
     font-size: 12pt;
     color: #d8d8d8;
     height: 100%;
@@ -14,7 +14,7 @@ h1 {
 }
 
 input {
-    font-family: monospace;
+    font-family: 'Noto Sans Mono', monospace;
     width: 100%;
     color: inherit;
     background-color: #181818;
@@ -22,7 +22,7 @@ input {
 }
 
 button {
-    font-family: monospace;
+    font-family: 'Noto Sans Mono', monospace;
     border-radius: 0px;
     width: fit-content;
     align-self: end;
