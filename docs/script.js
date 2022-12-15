@@ -7,7 +7,8 @@ function decode(s) {
 }
 
 function encodeDateName(date, name) {
-    var encoded = encode(date.toISOString().split('.')[0]);
+    var dateStr = date.toISOString().split('.')[0].replace(/[\-T:]/g,'');
+    var encoded = encode(dateStr);
     encoded = encoded.split('%')[0];
     if (name.length) {
         encoded += ' ' + encode(name);
@@ -17,12 +18,17 @@ function encodeDateName(date, name) {
 
 function decodeParam(param) {
     var split = param.split(' ');
-    split[0] = split[0] + '%3D';
+    var dS = decode(split[0]);
+    dS = [
+        dS.slice(0, -10), dS.slice(-10, -8), dS.slice(-8, -6)
+    ].join('-') + 'T' + [
+        dS.slice(-6, -4), dS.slice(-4, -2), dS.slice(-2)
+    ].join(':');
     var name = '';
     if (split.length > 1) {
         var name = decode(split[1]);
     }
-    var date = new Date(decode(split[0]) + '.000Z');
+    var date = new Date(dS + '.000Z');
     return [date, name];
 }
 
